@@ -8,11 +8,24 @@ with open(os.path.join(__location__, 'Cities.csv')) as f:
 	rows = csv.DictReader(f)
 	for r in rows:
 		cities.append(dict(r))
-
+'''
 # Print first 5 cities only
 for city in cities[:5]:
 	print(city)
+'''
 
+def filter(condition, dict_list):
+	temps = []
+	for item in dict_list:
+		if condition(item):
+			temps.append(item)
+	return temps
+
+# print the list of germany
+filtered_list = filter(lambda x:x['country'] == 'Germany',cities)
+print(filtered_list)
+
+'''
 # Print the average temperature of all the cities
 print("The average temperature of all the cities:")
 temps = []
@@ -88,3 +101,4 @@ for entry in cities:
 		if float(entry['temperature']) > m_temp:
 			m_temp = float(entry['temperature'])
 print(m_temp)
+'''
