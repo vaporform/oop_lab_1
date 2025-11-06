@@ -25,8 +25,14 @@ def aggregate(aggregation_key, aggregation_function, dict_list):
 	# aggregation_key: A way to group things
 	# aggregation_function: A way to combine things
 	# dict_list: your average dict/dataset.
-	info = {}
-	pass
+	info = []
+	for i in dict_list:
+		try:
+			info.append(float(i[aggregation_key]))
+		except:
+			info.append(i[aggregation_key])
+	com_info = aggregation_function(info)
+	return com_info
 
 # Print all cities in Germany
 filtered_list = filter(lambda x:x['country'] == 'Germany',cities)
