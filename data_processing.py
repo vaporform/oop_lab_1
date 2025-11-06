@@ -37,31 +37,21 @@ def aggregate(aggregation_key, aggregation_function, dict_list):
 # Print all cities in Germany
 filtered_list = filter(lambda x:x['country'] == 'Germany',cities)
 print(filtered_list)
+print()
 
 # Print all cities in Spain with a temperature above 12°C
-
-'''
-Your code here
-
-'''
+filtered_list = filter(lambda x:x['country'] == 'Spain' and float(x['temperature']) > 12,cities)
+print(filtered_list)
+print()
 
 # Count the number of unique countries
-
-'''
-Your code here
-
-'''
+filtered_list = aggregate('country',set,cities)
+print(len(filtered_list))
 
 # Print the average temperature for all the cities in Germany
-
-'''
-Your code here
-
-'''
+filtered_list = aggregate('temperature',lambda x: sum(x)/len(x),filter(lambda x:x['country'] == 'Germany',cities))
+print(filtered_list)
 
 # Print the max temperature for all the cities in Italy
-
-'''
-Your code here
-
-'''
+filtered_list = aggregate('temperature',max,filter(lambda x:x['country'] == 'Italy',cities))
+print(filtered_list)
